@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  crawlers:
+    build: .
+    container_name: crawler_service
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: poetry run python main.py 
+    depends_on:
+      - redis
+    networks:
+      - crawler_network
+
+  redis:
+    image: redis:alpine
+    container_name: redis_service
+    ports:
+      - "6379:6379"
+    networks:
+      - crawler_network
+
+networks:
+  crawler_network:
+    driver: bridge
