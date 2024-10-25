@@ -1,0 +1,35 @@
+title = "Crawlers and Parsers URL's targets, paths and configurations"
+
+[crawler]
+[crawler.selic]
+[crawler.selic.bacen]
+url = "https://www.bcb.gov.br/controleinflacao/historicotaxasjuros"
+local_write = "dev_data/S3/bronze/index/selic/bacen/"
+file_name = "raw_selic_bacen"
+extension = "html"
+S3_path = ""
+
+[crawler.selic.ipea]
+url = "http://www.ipeadata.gov.br/exibeserie.aspx?serid=38402"
+local_write = "dev_data/S3/bronze/index/selic/ipea/"
+file_name = "raw_selic_ipea"
+extension = "html"
+S3_path = ""
+
+[parser]
+[parser.selic]
+[parser.selic.bacen]
+local_read = "dev_data/S3/bronze/index/selic/bacen/"
+local_write = "dev_data/S3/silver/index/selic/bacen/"
+file_name = "selic_bacen"
+extension = "csv"
+S3_read = ""
+S3_write = ""
+
+[parser.selic.ipea]
+local_read = "dev_data/S3/bronze/index/selic/ipea/"
+local_write = "dev_data/S3/silver/index/selic/ipea/"
+file_name = "selic_ipea"
+extension = "csv"
+S3_read = ""
+S3_write = ""
